@@ -1,0 +1,10 @@
+app:
+  config:
+    fake-data:
+      execute: false
+      count: 100000
+      output-path: /tmp/lucene/data/lucene/docs
+    lucene:
+      index: true
+      index-path: /tmp/lucene/data/lucene/indexes
+      docs-path: /tmp/lucene/data/lucene/docs

@@ -1,0 +1,43 @@
+package com.reza.learning.model;
+
+public record Person(
+    String firstName,
+    String lastName,
+    String fullName,
+    String email,
+    String username,
+    String password,
+    String phoneNumber,
+    String company,
+    String jobTitle,
+    String address,
+    String city,
+    String state,
+    String country,
+    String zipCode,
+    String website,
+    String color,
+    String animal,
+    String book,
+    String quote,
+    String lorem,
+    String university,
+    String creditCardNumber,
+    String iban,
+    String bic,
+    String avatarUrl,
+    String uuid,
+    String ipV4,
+    String ipV6,
+    String macAddress,
+    String fileName,
+    String mimeType,
+    String url,
+    String date,
+    String time,
+    String currency,
+    String barcode,
+    String hexColor
+
+) {}
+

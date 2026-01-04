@@ -1,0 +1,8 @@
+app:
+  config:
+    fake-data:
+      execute: false
+    lucene:
+      index: false
+      index-path: /tmp/lucene/data/lucene/indexes
+      docs-path: /tmp/lucene/data/lucene/docs

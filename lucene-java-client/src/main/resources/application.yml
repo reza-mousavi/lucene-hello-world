@@ -1,0 +1,22 @@
+logging:
+  level:
+    root: INFO
+    com.reza.learning: INFO
+    org.apache.lucene.demo: INFO
+
+
+app:
+  config:
+    fake-data:
+      execute: true
+      count: 10000
+      output-path: /tmp/lucene/data/lucene/docs
+    lucene:
+      index: true
+      index-path: /tmp/lucene/data/lucene/indexes
+      docs-path: /tmp/lucene/data/lucene/docs
+      field: "contents"
+      create: true
+      raw: false
+      paging: 10
+      repeat: 0
