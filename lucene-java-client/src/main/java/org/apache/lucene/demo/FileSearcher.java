@@ -30,6 +30,7 @@ import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.StoredFields;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
@@ -90,7 +91,7 @@ public class FileSearcher {
         TopDocs results = searcher.search(query, 5 * hitsPerPage);
         ScoreDoc[] hits = results.scoreDocs;
 
-        int numTotalHits = Math.toIntExact(results.totalHits.value);
+        int numTotalHits = Math.toIntExact(results.totalHits.value());
         log.info("{} total matching documents", numTotalHits);
 
         int start = 0;
@@ -110,13 +111,15 @@ public class FileSearcher {
 
             end = Math.min(hits.length, start + hitsPerPage);
 
+            StoredFields storedFields = searcher.storedFields();
             for (int i = start; i < end; i++) {
                 if (raw) { // output raw format
                     log.info("doc={} score={}", hits[i].doc, hits[i].score);
                     continue;
                 }
 
-                Document doc = searcher.doc(hits[i].doc);
+                Document doc = storedFields.document(hits[i].doc);
+
                 String path = doc.get("path");
                 if (path != null) {
                     log.info("{}. {}", i + 1, path);
